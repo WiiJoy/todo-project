@@ -103,7 +103,7 @@ const tasks = [
         },
     
     };
-    let lastSelectedTheme = 'default';
+    let lastSelectedTheme = localStorage.getItem('app_theme' || 'default');
 
     // Elements UI
     const listContainer = document.querySelector('.task-list-section .list-group');
@@ -117,6 +117,7 @@ const tasks = [
     form.addEventListener('submit', onFormSubmitHandler);
     listContainer.addEventListener('click', onDeleteHandler);
     themeSelect.addEventListener('change', onThemeSelectHandler);
+    setTheme(lastSelectedTheme);
 
     function renderAllTasks(tasksList) {
         if (!tasksList) {
@@ -213,7 +214,7 @@ const tasks = [
         }
     }
 
-    function onThemeSelectHandler(e) {
+    function onThemeSelectHandler() {
         const selectedTheme = themeSelect.value;
         const isConfirmed = confirm(`Точно сменить тему: ${selectedTheme}`);
         if (!isConfirmed) {
@@ -222,13 +223,14 @@ const tasks = [
         }
         setTheme(selectedTheme);
         lastSelectedTheme = selectedTheme;
+        localStorage.setItem('app_theme', selectedTheme);
     }
 
     function setTheme(name) {
         const selectedThemeObj = themes[name];
         Object.entries(selectedThemeObj).forEach(([key, value]) => {
-            console.log(key, value);
             document.documentElement.style.setProperty(key, value);
         });
+        themeSelect.value = name;
     }
 })(tasks);
