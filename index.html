@@ -4,11 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/css/style.css">
     <title>Todo list</title>
 </head>
 <body>
+    <header class="header">
+        <h1 class="header__title">Тудушка</h1>
+        <form action="" class="header__form">
+            <select id="themeSelect" class="header__select">
+                <option value="default">Theme Default</option>
+                <option value="light">Theme Light</option>
+                <option value="dark">Theme Dark</option>
+            </select>
+        </form>
+    </header>
+
+    <section class="new-task">
+        <div class="container">
+            <h2 class="title">Добавление новой задачи</h2>
+            <form name="addTask" class="new-task__form">
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    class="new-task__input"
+                    placeholder="Task title"
+                >
+                <input
+                    type="text"
+                    name="body"
+                    id="body"
+                    class="new-task__input"
+                    placeholder="Task body"
+                >
+                <button type="submit" class="btn btn_task">
+                    Добавить задачу
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="tasks">
+        <div class="container">
+            <h2 class="title">Задачи в процессе</h2>
+            <div class="tasks__wrapper">
+                
+            </div>
+        </div>
+    </section>
+
+
+
+
     <nav class="header navbar navbar-dark bg-primary">
         <a class="navbar-brand">Navbar</a>
         <form class="form-inline">
