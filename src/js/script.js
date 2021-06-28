@@ -106,7 +106,7 @@ const tasks = [
     let lastSelectedTheme = localStorage.getItem('app_theme' || 'default');
 
     // Elements UI
-    const listContainer = document.querySelector('.task-list-section .list-group');
+    const listContainer = document.querySelector('.tasks__wrapper');
     const form = document.forms['addTask'];
     const inputTitle = form.elements['title'];
     const inputBody = form.elements['body'];
@@ -127,37 +127,41 @@ const tasks = [
         
         const fragment = document.createDocumentFragment();
         Object.values(tasksList).forEach(task => {
-            const li = listItemTemplate(task);
+            const taskItem = listItemTemplate(task);
             // Добавления элемента li в фрагмент
-            fragment.appendChild(li);
+            fragment.appendChild(taskItem);
         });
         listContainer.appendChild(fragment);
     }
 
     function listItemTemplate({_id, title, body}) {
         // Создание элемента таска
-        const li = document.createElement("li");
-        li.classList.add('list-group-item', 'd-flex', 'align-items-center', 'flex-wrap', 'mt-2');
+        const taskItem = document.createElement('div');
+        taskItem.classList.add('tasks__item');
+        // Создание обертки текстовой части таска
+        const taskText = document.createElement('div');
+        taskText.classList.add('tasks__item-wrapper');
         // Создание заголовка таска
-        const span = document.createElement('span');
-        span.textContent = title;
-        span.style.fontWeight = 'bold';
+        const taskTitle = document.createElement('div');
+        taskTitle.classList.add('tasks__item-title');
+        taskTitle.textContent = title;
         // Создание кнопки удаления таска
         const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete task';
-        deleteBtn.classList.add('btn', 'btn-danger', 'ms-auto', 'delete-btn');
+        deleteBtn.textContent = 'Удалить задачу';
+        deleteBtn.classList.add('btn', 'btn-delete');
         // Создание абзаца - тела таска
-        const article = document.createElement('p');
-        article.textContent = body;
-        article.classList.add('mt-2', 'w-100');
+        const taskBody = document.createElement('div');
+        taskBody.textContent = body;
+        taskBody.classList.add('tasks__item-body');
         // Добавление отдельных элементу к главному жлементу таска li
-        li.appendChild(span);
-        li.appendChild(deleteBtn);
-        li.appendChild(article);
+        taskText.appendChild(taskTitle);
+        taskText.appendChild(taskBody);
+        taskItem.appendChild(taskText);
+        taskItem.appendChild(deleteBtn);
 
-        li.setAttribute('data-task-id', _id);
+        taskItem.setAttribute('data-task-id', _id);
 
-        return li;
+        return taskItem;
     }
 
     function onFormSubmitHandler(e) {
@@ -206,7 +210,7 @@ const tasks = [
     }
 
     function onDeleteHandler({ target }) {
-        if (target.classList.contains('delete-btn')) {
+        if (target.classList.contains('btn-delete')) {
             const parent = target.closest('[data-task-id]');
             const id = parent.dataset.taskId;
             const confirmed = deleteTask(id);

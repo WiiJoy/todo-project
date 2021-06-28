@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous"> -->
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <title>Todo list</title>
 </head>
 <body>
@@ -50,8 +50,11 @@
             <h2 class="title">Задачи в процессе</h2>
             <div class="tasks__wrapper">
                 <div class="tasks__item">
-                    <div class="tasks__item-title">Заголовок таска</div>
-                    <div class="tasks__item-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nemo necessitatibus error animi omnis deleniti illo in, soluta repudiandae inventore totam suscipit nostrum, officiis aliquid. Dolores expedita veniam voluptatum labore?</div>
+                    <div class="tasks__item-wrapper">
+                        <div class="tasks__item-title">Заголовок таска</div>
+                        <div class="tasks__item-body">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos nemo necessitatibus error animi omnis deleniti illo in, soluta repudiandae inventore totam suscipit nostrum, officiis aliquid. Dolores expedita veniam voluptatum labore?</div>
+                    </div>
+                    <button class="btn btn-delete">Удалить задачу</button>
                 </div>
             </div>
         </div>
@@ -60,7 +63,7 @@
 
 
 
-    <nav class="header navbar navbar-dark bg-primary">
+    <!-- <nav class="header navbar navbar-dark bg-primary">
         <a class="navbar-brand">Navbar</a>
         <form class="form-inline">
             <select id="themeSelect" class="form-select form-select-sm">
@@ -108,7 +111,7 @@
         <div class="container">
             <ul class="list-group"></ul>
         </div>
-    </div>
+    </div> -->
 
     <script src="js/script.js"></script>
 </body>
