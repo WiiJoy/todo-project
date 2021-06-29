@@ -153,9 +153,10 @@ const tasks = [
         const taskBody = document.createElement('div');
         taskBody.textContent = body;
         taskBody.classList.add('tasks__item-body');
-        // Добавление отдельных элементу к главному жлементу таска li
+        // Добавление отдельных элементу к текстовой обертке таска taskText
         taskText.appendChild(taskTitle);
         taskText.appendChild(taskBody);
+        // Добавление элементов к главной обертке таска taskItem
         taskItem.appendChild(taskText);
         taskItem.appendChild(deleteBtn);
 
